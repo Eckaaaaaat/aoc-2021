@@ -2,12 +2,7 @@ import java.io.File
 import java.math.BigInteger
 import java.security.MessageDigest
 
-/**
- * Reads lines from the given input txt file.
- */
-fun readInput(name: String) = File("src", "$name.txt").readLines()
+fun readInput() = File("src/${dayFolder()}/input.txt").readLines()
+fun readTestInput() = File("src/${dayFolder()}/test_input.txt").readLines()
 
-/**
- * Converts string to md5 hash.
- */
-fun String.md5(): String = BigInteger(1, MessageDigest.getInstance("MD5").digest(toByteArray())).toString(16)
+private fun dayFolder() = Thread.currentThread().stackTrace[3].className.split(".")[0].lowercase().dropLast(2)
